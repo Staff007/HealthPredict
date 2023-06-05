@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main_page.css') }}">
+        <title>Главная страница</title>
+    </head>
+
+    <body>
+        <div class="bodyWithoutPadding">
+            <div class="leftMainBlock">
+                <form action="/main" method="post">
+                    <div class="leftMainBlockSubblock1">
+                        <h1 class="leftMainBlockSubblock1LogoH1">Health predict</h1>
+                        <p>Следите за своим здоровьем</p>
+                    </div>
+                    <div class="leftMainBlockSubblock2">
+                        <p class="leftMainBlockSubblock2Label">
+                            {{ predict_message }}
+                        </p>
+                    </div>
+                    <div class="leftMainBlockSubblock3">
+                        <div class="leftMainBlockSubblock3Row">
+                            <p>Оцените ваше самочувствие</p>
+                            <div class="choiceBox">
+                                <div class="choiceBox">
+                                    <input id="radio11" type="radio" name="radio1" value="1" checked>
+                                    <label for="radio11">1</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio12" type="radio" name="radio1" value="2" checked>
+                                    <label for="radio12">2</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio13" type="radio" name="radio1" value="3" checked>
+                                    <label for="radio13">3</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio14" type="radio" name="radio1" value="4" checked>
+                                    <label for="radio14">4</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio15" type="radio" name="radio1" value="5" checked>
+                                    <label for="radio15">5</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftMainBlockSubblock3Row">
+                            <p>Болит ли у вас голова? </p>
+                            <div class="choiceBox">
+                                <div class="choiceBox">
+                                    <input id="radio21" type="radio" name="radio2" value="1" checked>
+                                    <label for="radio21">Да</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio22" type="radio" name="radio2" value="0" checked>
+                                    <label for="radio22">Нет</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftMainBlockSubblock3Row">
+                            <p>Ваше давление повышено? </p>
+                            <div class="choiceBox">
+                                <div class="choiceBox">
+                                    <input id="radio31" type="radio" name="radio3" value="1" checked>
+                                    <label for="radio31">Да</label>
+                                </div>
+                                <div class="choiceBox">
+                                    <input id="radio32" type="radio" name="radio3" value="0" checked>
+                                    <label for="radio32">Нет</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leftMainBlockSubblock3ButtonRow">
+                            <button type="submit" class="leftMainBlockSubblock3Button">Отправить</button>
+                        </div>
+                    </div>
+                    <div class="leftMainBlockSubblock5">
+                        <img class="userGraph" src="{{url_for('static',filename='images/graph.png') }}">
+                        <div class="block_pressure">
+                            <span style="color: white;">Давление</span>
+                        </div>
+                        <div class="block_magnetic_storms">
+                            <span style="color: white;">Магнитные бури</span>
+                        </div>
+                        <div class="block_well_being">
+                            <span style="color: white;">Самочувствие</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="rigthMainBlock">
+                <div class="userBlockRow1_1">
+                    <img class="userImage" src="{{avatar}}">
+                </div>
+                <div class="userBlockRow1">
+                    <p>{{ username }}</p>
+                </div>
+                <div class="userBlockRow2">
+                    <p> {{ city }} </p>
+                    <p class="userBlockTime">
+                       <div class="userBlockTime" id="date-time"></div>
+                        <script type="text/javascript">
+                            const getCurrentTimeDate = () => {
+                                var month = new Array();
+                                month[1] = "января";
+                                month[2] = "февраля";
+                                month[3] = "марта";
+                                month[4] = "апреля";
+                                month[5] = "мая";
+                                month[6] = "июня";
+                                month[7] = "июля";
+                                month[8] = "августа";
+                                month[9] = "сентября";
+                                month[10] = "октября";
+                                month[11] = "ноября";
+                                month[12] = "декабря";
+                                n =  new Date();
+                                month_number = n.getMonth() + 1;
+                                day = n.getDate();
+                                minutes =  n.getMinutes();
+                                minutes = minutes < 10 ? '0'+minutes : minutes;
+                                hours   =  n.getHours();
+                                document.getElementById("date-time").innerHTML = `${day} ${month[month_number]} ${hours}:${minutes}`;
+                                setTimeout(getCurrentTimeDate, 500)
+                            }
+                            getCurrentTimeDate();
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>  
+</html>

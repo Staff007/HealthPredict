@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/registration_page.css') }}">
+        <title>Регистрация</title>
+    </head>
+
+    <body>
+
+        <div class="registrationBlock">
+            <div class="registrationBlockContent">
+                <h1>Регистрация</h1>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div class="fieldsBlock">
+                        <div class="fieldsBlockRow">
+                            <div class="fieldsBlockRowBorder"> </div>
+                            {{ form.username() }}
+                            <div class="fieldsBlockRowBorder"> </div>
+                        </div>
+                        <div class="fieldsBlockRow">
+                            <div class="fieldsBlockRowBorder"> </div>
+                            {{ form.email() }}
+                            <div class="fieldsBlockRowBorder"> </div>
+                        </div>
+                        <div class="fieldsBlockRow">
+                            <div class="fieldsBlockRowBorder"> </div>
+                            {{ form.password() }}
+                            <div class="fieldsBlockRowBorder"> </div>
+                        </div>
+                        <div class="fieldsBlockRow">
+                            <div class="fieldsBlockRowBorder"> </div>
+                            {{ form.repeat_password() }}
+                            <div class="fieldsBlockRowBorder"> </div>
+                        </div>
+                    </div>
+                    <div class="button_block">
+                        {{ form.submit(class_="submit_button") }}
+                    </div>
+                </form>
+                <div class="loginBlock">
+                    <p>Уже есть аккаунт?</p>
+                    <a href="{{ url_for('login') }}"class="text"><p>Войти</p></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
