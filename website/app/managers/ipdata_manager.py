@@ -14,6 +14,7 @@ class IpdataManager:
         try:
             ip_data = ipdata.IPData(self.api_key)
             response = ip_data.lookup(fields=["latitude", "longitude", "city"])
+            print(response)
             return response
         except Exception as e:
             print(f"Ошибка при попытке получить ответ IPData: {e}")
